@@ -58,7 +58,9 @@ export function AttendeeList() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		const url = new URL(`http://localhost:3333/events/${slug}/attendees`);
+		const url = new URL(
+			`${import.meta.env.VITE_API_URL}/events/${slug}/attendees`
+		);
 
 		url.searchParams.set('pageIndex', String(page - 1));
 
@@ -75,21 +77,21 @@ export function AttendeeList() {
 	}, [page, search, slug]);
 
 	function checkIn(attendeeId: string) {
-		fetch(`http://localhost:3333/attendees/${attendeeId}/check-in`).then(
-			(response) => {
-				if (response.ok) {
-					setAttendees((prevState) => {
-						const index = prevState.findIndex(
-							(attendee) => attendee.id === attendeeId
-						);
+		fetch(
+			`${import.meta.env.VITE_API_URL}/attendees/${attendeeId}/check-in`
+		).then((response) => {
+			if (response.ok) {
+				setAttendees((prevState) => {
+					const index = prevState.findIndex(
+						(attendee) => attendee.id === attendeeId
+					);
 
-						prevState[index].checkedInAt = new Date().toISOString();
+					prevState[index].checkedInAt = new Date().toISOString();
 
-						return [...prevState];
-					});
-				}
+					return [...prevState];
+				});
 			}
-		);
+		});
 	}
 
 	function setCurrentSearch(search: string) {

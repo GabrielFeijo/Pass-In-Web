@@ -48,7 +48,7 @@ export function Events() {
 	const [events, setEvents] = useState<Event[]>([]);
 
 	useEffect(() => {
-		const url = new URL('http://localhost:3333/events');
+		const url = new URL(`${import.meta.env.VITE_API_URL}/events`);
 
 		fetch(url, { method: 'GET' })
 			.then((response) => response.json())
@@ -68,7 +68,7 @@ export function Events() {
 		formValidationSchema
 			.validate(data, { abortEarly: false })
 			.then((validatedData) => {
-				fetch(`http://localhost:3333/events`, {
+				fetch(`${import.meta.env.VITE_API_URL}/events`, {
 					headers: {
 						Accept: 'application/json',
 						'Content-Type': 'application/json',
@@ -108,7 +108,9 @@ export function Events() {
 				};
 
 				fetch(
-					`http://localhost:3333/events/${validatedData.event.value}/attendees`,
+					`${import.meta.env.VITE_API_URL}/events/${
+						validatedData.event.value
+					}/attendees`,
 					{
 						headers: {
 							Accept: 'application/json',
