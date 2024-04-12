@@ -152,7 +152,7 @@ export function Events() {
 		<div className='flex gap-2 flex-wrap-reverse sm:flex-nowrap justify-between'>
 			<section>
 				<h1 className='text-2xl font-bold mb-4'>Eventos adicionados</h1>
-				<div className='grid  gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+				<div className='grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
 					{events.length === 0 ? (
 						<>
 							<ComponentSkeleton />
@@ -160,12 +160,10 @@ export function Events() {
 						</>
 					) : (
 						events.map((event) => (
-							<>
-								<Card
-									key={event.id}
-									event={event}
-								/>
-							</>
+							<Card
+								key={event.id}
+								event={event}
+							/>
 						))
 					)}
 				</div>
