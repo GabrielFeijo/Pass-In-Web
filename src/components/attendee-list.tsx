@@ -190,7 +190,7 @@ export function AttendeeList() {
 										className='size-4 bg-black/20 rounded border border-white/10 focus:ring-0  text-orange-400'
 									/>
 								</TableCell>
-								<TableCell>{attendee.id}</TableCell>
+								<TableCell>{attendee.id.slice(0, 8)}</TableCell>
 								<TableCell>
 									<div className='flex flex-col gap-1'>
 										<span className='font-semibold text-white'>
