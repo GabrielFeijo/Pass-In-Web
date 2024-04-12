@@ -7,6 +7,8 @@ import { FormHandles } from '@unform/core';
 import '../utils/yupTranslations';
 import Select from './form/select';
 import { SubmitButton } from './form/submit-button';
+import { Card } from './card';
+import { ComponentSkeleton } from './component-skeleton';
 
 interface IVFormErrors {
 	[key: string]: string;
@@ -147,27 +149,25 @@ export function Events() {
 	};
 
 	return (
-		<div className='flex gap-2 flex-wrap-reverse sm:flex-nowrap'>
+		<div className='flex gap-2 flex-wrap-reverse sm:flex-nowrap justify-between'>
 			<section>
 				<h1 className='text-2xl font-bold mb-4'>Eventos adicionados</h1>
 				<div className='grid  gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
-					{events.map((event) => (
-						<a
-							key={event.id}
-							className='border border-white/10 rounded-lg bg-slate-900 w-full py-4 px-8 text-left hover:border-emerald-500 transition-colors delay-75 cursor-pointer'
-							href={`/participantes/${event.slug}`}
-						>
-							<h3 className='text-xl font-bold break-all'>{event.title}</h3>
-							<p className='text-zinc-300'>{event.details}</p>
-							<hr className='my-2 w-full border-white/10' />
-							<p className='text-zinc-300 text-xs'>
-								Qtde. de vagas: {event.maximumAttendees || 'Sem limite'}
-							</p>
-							<p className='text-zinc-300 text-xs'>
-								Participantes: {event.attendeesAmount}
-							</p>
-						</a>
-					))}
+					{events.length === 0 ? (
+						<>
+							<ComponentSkeleton />
+							<ComponentSkeleton />
+						</>
+					) : (
+						events.map((event) => (
+							<>
+								<Card
+									key={event.id}
+									event={event}
+								/>
+							</>
+						))
+					)}
 				</div>
 			</section>
 
