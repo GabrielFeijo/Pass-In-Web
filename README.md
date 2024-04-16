@@ -18,7 +18,7 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas em s
 [Git](https://git-scm.com),
 [NodeJS](https://nodejs.org/en).
 
-Também é bom ter um editor para trabalhar com o código como [VSCode](https://github.com/GabrielFeijo/Pass-In-Node/)
+Também é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ---
 
